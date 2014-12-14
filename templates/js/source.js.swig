@@ -1,6 +1,5 @@
-/*
-//js for <%= name %>
-console.log('hey there from <%= name %>');
+//js for {{name}}
+console.log('hey there from {{name}} ');
 //for documentation, we'll use markdown
 var marked = require('marked');
 var dom = require('domquery');

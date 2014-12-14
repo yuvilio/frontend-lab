@@ -1,4 +1,4 @@
-//sass for <%= name %>
+//sass for {{name}}
 .rect1 {
-fill: salmon;
+  fill: salmon;
 }

@@ -15,6 +15,7 @@ var vss = require('vinyl-source-stream');
 var path = require('path');
 var open = require('open');
 var swig = require('gulp-swig'); //render swig templates
+var gdata = require('gulp-data'); //pass data via streams
 var rename = require('gulp-rename');
 
 //parse command line options
@@ -44,16 +45,24 @@ gulp.task('init', function(){
     }
   };
 
+  var context = {
+    name: options.name,
+    batch: options.batch
+  };
+
   gulp.src('./templates/index.swig')
+  .pipe(gdata(context))
   .pipe(swig(swigopts))
   .pipe(gulp.dest( labPath + '/' ));
 
   gulp.src('./templates/scss/styles.scss.swig')
+  .pipe(gdata(context))
   .pipe(swig(swigopts))
   .pipe(rename('styles.scss')) //when not generating html, need to rename output
   .pipe(gulp.dest( labPath + '/sass/'));
 
   gulp.src('./templates/js/source.js.swig')
+  .pipe(gdata(context))
   .pipe(swig(swigopts))
   .pipe(rename('source.js'))
   .pipe(gulp.dest( labPath + '/js/'));
@@ -143,4 +152,5 @@ gulp.task('browserSync', ['watchify', 'watch'], function() {
     // changes we'll have it
     files: [ labPath + '/index.html' ]
   });
+
 });
