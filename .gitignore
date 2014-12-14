@@ -1,0 +1,9 @@
+.DS_Store
+Thumbs.db
+db.json
+
+node_modules/
+npm-debug.log
+.sass-cache/
+dist/
+lab/
