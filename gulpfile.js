@@ -57,6 +57,7 @@ gulp.task('init', function(){
   gulp.src('./templates/index.swig')
   .pipe(gdata(context))
   .pipe(swig(swigopts))
+  .pipe(rename('index.swig')) //it will still be a swig template
   .pipe(gulp.dest( labPath + '/' ));
 
   gulp.src('./templates/scss/styles.scss.swig')
@@ -137,9 +138,29 @@ gulp.task('sass', function() {
 });
 
 
+//generate the html from the swig templates
+gulp.task('gen-html', function() {
+
+  console.log('gen-html: generating html to %s', distPath);
+
+  var swigopts  = {
+    defaults: {
+      cache: false
+    }
+  };
+  return gulp.src(labPath + '/index.swig')
+  .pipe(swig(swigopts))
+  .pipe(gulp.dest(distPath));
+});
+
 //watching non-specialized files (like sas changes)
 gulp.task('watch', function(){
+    //when the scss changes, run gulp-sass task
     gulp.watch(labPath + '/sass/styles.scss', ['sass']);
+
+    //when the html (swig template) changes
+    gulp.watch(labPath + '/**/*.swig', ['gen-html']);
+
 })
 
 //we'll kick off watchify which will take care of the bundling and inform us
@@ -152,9 +173,9 @@ gulp.task('browserSync', ['watchify', 'watch'], function() {
        directory: true //alternatly the root can just be the directory and you click the file
     },
     port: options.port,
-    // browserSync will have some watching duties as well. whenever the html
-    // changes we'll have it
-    files: [ labPath + '/index.html' ]
+    // browserSync will have some watching duties as well. whenever the
+    // generated html changes we'll have refresh
+    files: [ distPath + '/index.html' ]
   });
 
 });
