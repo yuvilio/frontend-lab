@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-<title><%= name %></title>
+<title>{{name}}</title>
 <link rel="stylesheet" href="/dist/{{batch}}/{{name}}/css/styles.css">
 <script src="/dist/{{batch}}/{{name}}/js/source.js"></script>
 </head>

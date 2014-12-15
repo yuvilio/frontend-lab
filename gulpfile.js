@@ -17,6 +17,8 @@ var open = require('open');
 var swig = require('gulp-swig'); //render swig templates
 var gdata = require('gulp-data'); //pass data via streams
 var rename = require('gulp-rename');
+var hexofs = require('hexo-fs'); //promise friendly fs functions
+
 
 //parse command line options
 var knownOptions = {
@@ -38,6 +40,8 @@ var distPath = './dist/'+ options.batch + '/'+ options.name; //the dist is the p
 // ex: $ gulp init --batch svg-shapes --name svg-001-test
 gulp.task('init', function(){
   console.log('initializing project %s ', options.name);
+
+  hexofs.mkdirs( distPath + '/img' ); //no need to wait on this so no promise wrapping
 
   var swigopts  = {
     defaults: {
