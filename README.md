@@ -114,6 +114,8 @@ When you save, it will get bundled into the result source.js in your 'dist/'
 
 - Keep your examples focused on doing one thing. Exploring and verifying on some css properties. Honing your layout knowledge, or responsive ideas.
 
+- Feel free to adjust the starter templates that gulp init uses to make your html/scss/js . They are in the ```templates/``` folder.
+
 - Feel free to include common baseline styles in your gulpfile.scss . Add them to the loadPath (I have bourbon ones added right now, feel free to comment those out.) and then make use of them with something like```scss  @import '../../sass/some-baseline-styles.scss'; ```
 
 - Create as many batches and names as you want. This is your personal local lab, not a public [codepen](http://codepen.io). It is here for you to experiment on whatever "What if I code this?" question that enters your mind.
