@@ -1,7 +1,7 @@
 {
-  "name": "svg-lab",
+  "name": "frontend-lab",
   "version": "1.0.0",
-  "description": "",
+  "description": "Just a gulp automated playground to test out little front end ideas.",
   "main": "gulpfile.js",
   "browserify": {
     "transform": [

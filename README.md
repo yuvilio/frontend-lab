@@ -124,7 +124,7 @@ For now, probably no unless it's really worth it. This is just a quick and dirty
 
 When you save, it will get bundled into the result source.js in your 'dist/'
 
-##Tips
+## Tips
 
 
 - Use the tools! Use the Sass to ease up your css writing. Use [swig](http://paularmstrong.github.io/swig/docs) templating to make complicated html examples faster. Use browserify to explore the wonderous world of front end javascript npm modules. So many to choose from at [npmsearch](http://npmsearch.com).
