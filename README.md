@@ -1,7 +1,7 @@
 frontend-lab
 ============
 
-A gulp setup to test out ideas and learn front-end techniques. gulp init ... code ...
+A gulp setup to test out ideas and learn front-end techniques. Initialize small example, have gulp watch it and code to your heart's content.  Rinse and repeat.
 
 ## The need
 
@@ -19,7 +19,24 @@ These are the tools this setup uses to make testing new ideas both easy to start
 - [browserify](https://github.com/substack/node-browserify) for testing out various javascript widgets that come neatly packaged up with npm
 - [browser-sync](https://github.com/shakyShane/browser-sync) for not having to refresh my browser and testing on multiple browsers
 
+## Requirements
+
+You'll need nodejs and gulp which coordinates all the tools mentioned to work together so you can focus on just coding.
+
+```bash
+$ npm install --global gulp
+```
+
+I also use ruby Sass:
+
+```bash
+$ gem install sass
+```
+
+
 ## Install
+
+Clone the repository which serves as the lab's starting point and have it install the tools required.
 
 ```bash
 $ git clone https://github.com/yuvilio/frontend-lab
@@ -101,9 +118,9 @@ var dom = require('domquery');
 
 When you save the file, browserify will bundle that library into the resulting ```source.js``` file in ```dist/```.
 
-### Will you support ___ template engine, css precompiler?
+### Will you support ___ template engine, css precompiler, ... ?
 
-For now probably no unless it's really worth it. This is just a quick and dirty setup that I use and figured I would share as is. But feel free to fork, adjust or suggest if you think there is something missing.
+For now, probably no unless it's really worth it. This is just a quick and dirty setup that I use and figured I would share as is. But feel free to fork, adjust or suggest if you think there is something missing.
 
 When you save, it will get bundled into the result source.js in your 'dist/'
 
@@ -116,7 +133,7 @@ When you save, it will get bundled into the result source.js in your 'dist/'
 
 - Feel free to adjust the starter templates that gulp init uses to make your html/scss/js . They are in the ```templates/``` folder.
 
-- Feel free to include common baseline styles in your gulpfile.scss . Add them to the loadPath (I have bourbon ones added right now, feel free to comment those out.) and then make use of them with something like```scss  @import '../../sass/some-baseline-styles.scss'; ```
+- Feel free to include common baseline styles in your styles.scss . In your gulpfile., add them to the ```loadPath``` (I have [bourbon](http://bourbon.io/) ones added right now, feel free to comment those out and/or add your own.) and then, in your example's styles.scss make use of them through importing with something like```scss  @import '../../sass/some-baseline-styles.scss'; ```
 
 - Create as many batches and names as you want. This is your personal local lab, not a public [codepen](http://codepen.io). It is here for you to experiment on whatever "What if I code this?" question that enters your mind.
 
