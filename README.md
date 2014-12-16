@@ -131,6 +131,8 @@ When you save, it will get bundled into the result source.js in your 'dist/'
 
 - Keep your examples focused on doing one thing. Exploring and verifying on some css properties. Honing your layout knowledge, or responsive ideas.
 
+- It's not just about new examples. Have a strange style, js issue that is flustering you? Maybe it's hard to solve because there is so much going on in that page. Try to isolate _just_ the relevant html/js/css back in a lab example and see if that helps you see what needs nudging or rethinking.
+
 - Feel free to adjust the starter templates that gulp init uses to make your html/scss/js . They are in the ```templates/``` folder.
 
 - Feel free to include common baseline styles in your styles.scss . In your gulpfile., add them to the ```loadPath``` (I have [bourbon](http://bourbon.io/) ones added right now, feel free to comment those out and/or add your own.) and then, in your example's styles.scss make use of them through importing with something like```scss  @import '../../sass/some-baseline-styles.scss'; ```
