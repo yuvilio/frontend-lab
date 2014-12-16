@@ -50,7 +50,7 @@ $ npm install
 
 I cut my projects into "batches" and cut batches into "names". Batches can be more general umbrellas and names are the working unit.  I also like to number the names so I can keep track of what item I coded first, but that's a personal preference.
 
-
+Let's kick off an an example about toying with css floats:
 
 ```bash
 $ gulp init --batch learn-some-css --name 006-floats
@@ -118,7 +118,7 @@ var dom = require('domquery');
 
 When you save the file, browserify will bundle that library into the resulting ```source.js``` file in ```dist/```.
 
-### Will you support ___ template engine, css precompiler, ... ?
+### Will you support ___ template engine, css precompiler, js testing framework ... ?
 
 For now, probably no unless it's really worth it. This is just a quick and dirty setup that I use and figured I would share as is. But feel free to fork, adjust or suggest if you think there is something missing.
 
