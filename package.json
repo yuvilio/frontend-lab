@@ -1,6 +1,11 @@
 {
   "name": "frontend-lab",
-  "version": "1.0.0",
+  "version": "0.6.0",
+  "repository": "yuvilio/frontend-lab",
+  "tags": [
+    "asset",
+    "pipeline"
+  ],
   "description": "Just a gulp automated playground to test out little front end ideas.",
   "main": "gulpfile.js",
   "browserify": {
@@ -13,7 +18,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "yuvilio",
   "license": "ISC",
   "devDependencies": {
     "browser-sync": "^1.5.2",
