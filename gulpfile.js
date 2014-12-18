@@ -129,8 +129,7 @@ gulp.task('sass', function() {
   return gulp.src(labPath + '/sass/styles.scss')
     .pipe(sass({
       //have some more stylesheets you may want to use? Add them here
-      "loadPath" : ['assets/scss', '~/.rbenv/versions/2.1.5/gemsets/main/gems/bourbon-4.0.2/dist',
-      '~/.rbenv/versions/2.1.5/gemsets/main/gems/bitters-0.10.1/app/assets/stylesheets' ]
+      "loadPath" : ['assets/scss']
     }))
     .on('error', function (error) { // Catch any SCSS errors and prevent them from crashing gulp
       console.error(error);
