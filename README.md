@@ -137,6 +137,8 @@ When you save, it will get bundled into the result source.js in your 'dist/'
 
 - Feel free to include common baseline styles in your styles.scss . In your gulpfile., add them to the ```loadPath``` (I have [bourbon](http://bourbon.io/) ones added right now, feel free to comment those out and/or add your own.) and then, in your example's styles.scss make use of them through importing with something like```scss  @import '../../sass/some-baseline-styles.scss'; ```
 
+- Feel free to adjust the gulpfile and package.json.  Want to use browserify transforms like [reactify](https://github.com/andreypopp/reactify) for example? Just ```npm install``` it and  add the transform code to the gulpfile.js or package.json. This is all but a starting point.
+
 - Create as many batches and names as you want. This is your personal local lab, not a public [codepen](http://codepen.io). It is here for you to experiment on whatever "What if I code this?" question that enters your mind.
 
 - Having said that, if you cook something tasty, consider copying over publicly to codepen to build your street cred and show others.
