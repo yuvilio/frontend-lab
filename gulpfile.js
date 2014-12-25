@@ -91,6 +91,9 @@ gulp.task('watchify', function(){
   var bundleShare = function(b) {
 
    return b.bundle() //recall b (the watchify/browserify object alreadyknows the source files). carry out the bundling
+     .on("error", function(err) { //trap errors so as not to crash watchify
+       console.log("Browserify error:", err);
+     })
      .pipe(vss( distPath + '/js/source.js'))
      .pipe(gulp.dest('./'))
      //after you're done bundling, inform browserSync to reload the page
