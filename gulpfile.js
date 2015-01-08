@@ -1,9 +1,3 @@
-
-
-//watch a fileb
-//when it's new, open browser . when it's updated browsersync
-
-
 var gulp = require('gulp');
 var gutil = require('gulp-util');
 var browserSync = require('browser-sync');
@@ -18,7 +12,7 @@ var swig = require('gulp-swig'); //render swig templates
 var gdata = require('gulp-data'); //pass data via streams
 var rename = require('gulp-rename');
 var hexofs = require('hexo-fs'); //promise friendly fs functions
-
+var autoprefixer = require('gulp-autoprefixer');
 
 //parse command line options
 var knownOptions = {
@@ -90,14 +84,14 @@ gulp.task('watchify', function(){
   //mostly similary to the watchify task right above with one addition
   var bundleShare = function(b) {
 
-   return b.bundle() //recall b (the watchify/browserify object alreadyknows the source files). carry out the bundling
-     .on("error", function(err) { //trap errors so as not to crash watchify
-       console.log("Browserify error:", err);
-     })
-     .pipe(vss( distPath + '/js/source.js'))
-     .pipe(gulp.dest('./'))
-     //after you're done bundling, inform browserSync to reload the page
-     .pipe(browserSync.reload({stream:true, once: true}));
+    return b.bundle() //recall b (the watchify/browserify object alreadyknows the source files). carry out the bundling
+    .on("error", function(err) {
+      console.log("Browserify error:", err);
+    })
+    .pipe(vss( distPath + '/js/source.js'))
+    .pipe(gulp.dest('./'))
+    //after you're done bundling, inform browserSync to reload the page
+    .pipe(browserSync.reload({stream:true, once: true}));
   };
 
   var b = browserify({
@@ -115,12 +109,16 @@ gulp.task('watchify', function(){
   b = watchify(b);
 
   //whenever a file we're bundling is updated
-   b.on('update', function(paths){
-     //give some sort of gulp indication that a save occured on one of the watched files
-     console.log('watchify rebundling: ', paths);
+  b.on('update', function(paths){
+    //give some sort of gulp indication that a save occured on one of the watched files
+    console.log('watchify rebundling: ', paths);
     bundleShare(b); //browserify away
   });
 
+  // b.on('error', function (error) { // Catch any js errors and prevent them from crashing gulp
+  //   console.error(error);
+  //   this.emit('end');
+  // })
 
   //while we're here let's do a one time browserify bundling
   bundleShare(b);
@@ -130,16 +128,24 @@ gulp.task('watchify', function(){
 //compile sass -> css
 gulp.task('sass', function() {
   return gulp.src(labPath + '/sass/styles.scss')
-    .pipe(sass({
-      //have some more stylesheets you may want to use? Add them here
-      "loadPath" : ['assets/scss']
-    }))
-    .on('error', function (error) { // Catch any SCSS errors and prevent them from crashing gulp
-      console.error(error);
-      this.emit('end');
-    })
-    .pipe(gulp.dest(distPath + '/css'))
-    .pipe(browserSync.reload({ stream:true, once: true }));
+  .pipe(sass({
+    //disabling sourmaps for now fir gulp-ruby-sass work with gulp-autoprefixer
+    //see http://stackoverflow.com/questions/26979433/gulp-with-gulp-ruby-sass-error-style-css-map31-unknown-word
+    "sourcemap=none": true,
+
+    //have some more stylesheets you may want to use? Add them here
+    "loadPath" : ['assets/scss']
+  }))
+  .on('error', function (error) { // Catch any SCSS errors and prevent them from crashing gulp
+    console.error(error);
+    this.emit('end');
+  })
+  .pipe(autoprefixer({
+    browsers: ['last 2 versions'],
+    cascade: false
+  }))
+  .pipe(gulp.dest(distPath + '/css'))
+  .pipe(browserSync.reload({ stream:true, once: true }));
 });
 
 
@@ -160,11 +166,11 @@ gulp.task('gen-html', function() {
 
 //watching non-specialized files (like sas changes)
 gulp.task('watch', function(){
-    //when the scss changes, run gulp-sass task
-    gulp.watch(labPath + '/sass/styles.scss', ['sass']);
+  //when the scss changes, run gulp-sass task
+  gulp.watch(labPath + '/sass/styles.scss', ['sass']);
 
-    //when the html (swig template) changes
-    gulp.watch(labPath + '/**/*.swig', ['gen-html']);
+  //when the html (swig template) changes
+  gulp.watch(labPath + '/**/*.swig', ['gen-html']);
 
 })
 
@@ -172,10 +178,10 @@ gulp.task('watch', function(){
 // ex: $ gulp browserSync --batch svg-pocket-guide --name svg-001-test
 gulp.task('browserSync', ['watchify', 'watch'], function() {
   browserSync(
-    {
+  {
     server: { //have browser-synce be the static site
-       baseDir: "./", //the root /
-       directory: true //alternatly the root can just be the directory and you click the file
+      baseDir: "./", //the root /
+      directory: true //alternatly the root can just be the directory and you click the file
     },
     port: options.port,
     // browserSync will have some watching duties as well. whenever the
