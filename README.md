@@ -19,6 +19,8 @@ These are the tools this setup uses to make testing new ideas both easy to start
 - [gulp-autoprefixer](https://github.com/sindresorhus/gulp-autoprefixer) for making sure sass/css is clean on your development end but slightly more compatible with older browsers on the generated end.
 - [browserify](https://github.com/substack/node-browserify) for testing out various javascript widgets that come neatly packaged up with npm
 - [browser-sync](https://github.com/shakyShane/browser-sync) for not having to refresh my browser and testing on multiple browsers
+- [highlight.js](https://github.com/isagalaev/highlight.js) along with [highlight-redux](https://github.com/bevacqua/highlight-redux) for sprinkling code higlighting in your templates. See [example usage docs](https://github.com/yuvilio/highlight-redux/blob/8a8aadc92c4a51205a8ddb9ff393202ee3ab7017/README.md).
+
 
 ## Requirements
 
