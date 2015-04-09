@@ -167,7 +167,7 @@ gulp.task('gen-html', function() {
 //watching non-specialized files (like sas changes)
 gulp.task('watch', function(){
   //when the scss changes, run gulp-sass task
-  gulp.watch(labPath + '/sass/styles.scss', ['sass']);
+  gulp.watch(labPath + '/sass/*.scss', ['sass']);
 
   //when the html (swig template) changes
   gulp.watch(labPath + '/**/*.swig', ['gen-html']);
